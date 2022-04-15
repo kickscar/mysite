@@ -6,9 +6,9 @@ import javax.servlet.http.HttpSession;
 
 import me.kickscar.mysite.vo.UserVo;
 import org.springframework.web.method.HandlerMethod;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+import org.springframework.web.servlet.HandlerInterceptor;
 
-public class AuthInterceptor extends HandlerInterceptorAdapter {
+public class AuthInterceptor implements HandlerInterceptor {
 
 	@Override
 	public boolean preHandle(

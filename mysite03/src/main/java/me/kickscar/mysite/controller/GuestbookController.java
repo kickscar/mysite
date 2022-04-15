@@ -46,6 +46,6 @@ public class GuestbookController {
 	
 	@RequestMapping("/spa")
 	public String spaLanding() {
-		return "guestbook/spa-landing";
+		return "guestbook/index-spa";
 	}
 }

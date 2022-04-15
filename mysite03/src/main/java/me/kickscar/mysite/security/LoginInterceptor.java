@@ -7,9 +7,9 @@ import javax.servlet.http.HttpSession;
 import me.kickscar.mysite.service.UserService;
 import me.kickscar.mysite.vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+import org.springframework.web.servlet.HandlerInterceptor;
 
-public class LoginInterceptor extends HandlerInterceptorAdapter {
+public class LoginInterceptor implements HandlerInterceptor {
 	@Autowired
 	private UserService userService;
 	

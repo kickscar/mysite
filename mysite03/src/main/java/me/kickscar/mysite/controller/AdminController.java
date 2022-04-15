@@ -13,10 +13,15 @@ import org.springframework.web.multipart.MultipartFile;
 import me.kickscar.mysite.security.Auth;
 import me.kickscar.mysite.vo.SiteVo;
 
+import javax.servlet.ServletContext;
+
 @Auth(role="ADMIN")
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
+	@Autowired
+	private ServletContext servletContext;
+
 	@Autowired
 	private SiteService siteService;
 
@@ -31,11 +36,16 @@ public class AdminController {
 	}
 
 	@RequestMapping(value="/main/update", method=RequestMethod.POST)
-	public String updateMain(SiteVo vo, @RequestParam("file") MultipartFile file) {
+	public String updateMain(SiteVo site, @RequestParam("file") MultipartFile file) {
 		String profile = fileUploadService.restore(file);
-		vo.setProfile(profile);
-		
-		siteService.updateSite(vo);
+
+		if(profile != null) {
+			site.setProfile(profile);
+		}
+
+		siteService.updateSite(site);
+
+		servletContext.setAttribute("site", site);
 		return "redirect:/admin";
 	}
 	

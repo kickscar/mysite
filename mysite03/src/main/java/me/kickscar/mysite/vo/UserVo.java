@@ -1,10 +1,10 @@
 package me.kickscar.mysite.vo;
 
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
-
-import org.hibernate.validator.constraints.Length;
 
 public class UserVo {
 	private Long no;

@@ -1,7 +1,5 @@
 package me.kickscar.mysite.controller;
 
-import javax.validation.Valid;
-
 import me.kickscar.mysite.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import me.kickscar.mysite.security.Auth;
 import me.kickscar.mysite.security.AuthUser;
 import me.kickscar.mysite.vo.UserVo;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/user")

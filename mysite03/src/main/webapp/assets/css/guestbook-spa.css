@@ -5,8 +5,6 @@
 #guestbook h1		{
 	color: #5C5C5C;
 	margin-bottom:10px;
-	background:url('/mysite03/assets/images/guestbook.png') 0 0 no-repeat;
-	background-size: 35px;
 	padding-left:40px;
 }
 #guestbook form { width:100% }
@@ -79,27 +77,35 @@
 	width:20px;
 	height:20px;
 	font-size:0;	
-	background:url('assets/images/delete.png') 0 0 no-repeat;
+	background:url('/mysite03/assets/images/delete.png') 0 0 no-repeat;
 	left:20px;
 	top:40px;
 	outline:none;
 }
 
-#guestbook.delete-form	{ height:200px }
-#guestbook.delete-form form {
-	width:300px;
-	padding:10px;
-	border:1px solid #666;
-	border-radius: 10px;
-	margin:50px auto;
+#dialog-delete-form	{ height:200px }
+
+#dialog-delete-form .validateTips.normal, #dialog-delete-form .validateTips.error {
+	padding: 10px 0;
 }
 
-#guestbook.delete-form a	{ display:block; margin:20px auto; width:110px }
-#guestbook.delete-form input[type="password"] {
-	margin-top:5px;
-	width:284px;
+#dialog-delete-form .validateTips.error {
+	color: #f00;
+	font-weight: bold;
 }
-#guestbook.delete-form input[type="submit"] {
-	width:296px;
-}		
-#guestbook.delete-message p	{ padding:100px; height:50px; text-align:center }
+
+#dialog-delete-form form {
+	width:300px;
+	margin:0 auto;
+}
+
+#dialog-delete-form input[type="password"] {
+	border:2px solid #ccc;
+	padding: 5px;
+	width:284px;
+	outline: none;
+}
+
+#dialog-message p {
+	padding: 10px 0;
+}

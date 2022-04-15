@@ -2,13 +2,13 @@
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns="http://www.springframework.org/schema/beans"
-	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
 	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
 	<!-- auto proxy -->
 	<aop:aspectj-autoproxy />
 
@@ -36,10 +36,10 @@
 		</mvc:argument-resolvers>
 	</mvc:annotation-driven>
 
-	<!-- 서블릿 컨테이너의 디폴트 서블릿 위임 핸들러 -->
+	<!-- defualt servlet handler -->
 	<mvc:default-servlet-handler />
 
-	<!-- Interceptors -->
+	<!-- interceptors -->
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/user/auth" />
@@ -56,9 +56,13 @@
 			<mvc:exclude-mapping path="/assets/**" />
 			<bean class="me.kickscar.mysite.security.AuthInterceptor" />
 		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="me.kickscar.mysite.interceptor.SiteInterceptor" />
+		</mvc:interceptor>
 	</mvc:interceptors>
 
-	<!-- ViewResolver 설정 -->
+	<!-- view resolver -->
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
@@ -66,7 +70,7 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 
-	<!-- Multipart Resolver -->
+	<!-- multipart resolver -->
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<!-- 최대업로드 가능한 바이트크기 -->
@@ -77,10 +81,10 @@
 		<property name="defaultEncoding" value="utf-8" />
 	</bean>
 
-	<!-- mvc resources mapping -->
+	<!-- resources mapping -->
 	<mvc:resources location="file:/Users/kickscar/mysite-uploads/" mapping="/assets/gallery/**" />
 
-	<!-- 6. MessageSource -->
+	<!-- message resource -->
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basenames">
 			<list>
@@ -91,5 +95,4 @@
 
 	<context:annotation-config />
 	<context:component-scan base-package="me.kickscar.mysite.controller, me.kickscar.mysite.exception" />
-
 </beans>

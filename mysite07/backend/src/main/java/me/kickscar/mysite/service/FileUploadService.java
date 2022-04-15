@@ -15,6 +15,8 @@ public class FileUploadService {
 	private static String URL_BASE = "/assets/gallery";	
 	
 	public String restoreImage(MultipartFile file) throws RuntimeException {
+		String url = null;
+
 		try {
 			File uploadDirectory = new File(SAVE_PATH);
 			if(!uploadDirectory.exists()) {
@@ -34,11 +36,13 @@ public class FileUploadService {
 			os.write(data);
 			os.close();
 
-			return URL_BASE + "/" + saveFilename;
+			url = URL_BASE + "/" + saveFilename;
 			
 		} catch(IOException ex) {
 			throw new RuntimeException("file upload error:" + ex);
 		}
+
+		return url;
 	}
 	
 	private String generateSaveFilename(String extName) {
