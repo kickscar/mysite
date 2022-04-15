@@ -10,14 +10,14 @@
 	</appender>
 
 	<appender name="fileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>/log-mysite/exception.log</file>
+		<file>/Users/kickscar/mysite-logs/exception.log</file>
 		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
 			<Pattern>
 				%d{HH:mm:ss.SSS} [%thread] %-5level %logger{5} - %msg%n
 			</Pattern>
 		</encoder>
 		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-			<FileNamePattern>/log-mysite/exception.%i.log.zip</FileNamePattern>
+			<FileNamePattern>/Users/kickscar/mysite-logs/exception.%i.log.zip</FileNamePattern>
 			<MinIndex>1</MinIndex>
 			<MaxIndex>10</MaxIndex>
 		</rollingPolicy>
@@ -27,7 +27,7 @@
 		</triggeringPolicy>
 	</appender>
 
-	<logger name="com.douzone.mysite.exception" level="error" additivity="false">
+	<logger name="me.kickscar.mysite.exception" level="error" additivity="false">
 		<appender-ref ref="consoleAppender" />
         <appender-ref ref="fileAppender" />
     </logger>
@@ -35,5 +35,4 @@
 	<root level="info">
 		<appender-ref ref="consoleAppender" />
 	</root>
-
 </configuration>
