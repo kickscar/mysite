@@ -1,12 +1,11 @@
 package me.kickscar.mysite.service;
 
-import java.util.List;
-
+import me.kickscar.mysite.repository.GuestbookRepository;
+import me.kickscar.mysite.vo.GuestbookVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import me.kickscar.mysite.repository.GuestbookRepository;
-import me.kickscar.mysite.vo.GuestbookVo;
+import java.util.List;
 
 @Service
 public class GuestbookService {
@@ -17,16 +16,19 @@ public class GuestbookService {
 			return guestbookRepository.findAll();
 	}
 	
-	public void deleteMessage(Long no, String password) {
+	public List<GuestbookVo> getMessageList(Long no) {
+		return guestbookRepository.findAll(no);
+	}
+	
+	public Boolean deleteMessage(Long no, String password) {
 		GuestbookVo vo = new GuestbookVo();
 		vo.setNo(no);
 		vo.setPassword(password);
 		
-		guestbookRepository.delete(vo);
+		return guestbookRepository.delete(vo).equals(1);
 	}
 
-	public void addMessage(GuestbookVo vo) {
-		guestbookRepository.insert(vo);
+	public Boolean addMessage(GuestbookVo vo) {
+		return guestbookRepository.insert(vo).equals(1);
 	}
-	
 }

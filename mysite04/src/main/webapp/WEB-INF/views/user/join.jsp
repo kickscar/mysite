@@ -21,7 +21,7 @@ $(function(){
 			return;
 		}
 		$.ajax({
-			url: "${pageContext.request.contextPath }/user/api/checkemail?email=" + email,
+			url: "/mysite03/user/api/checkemail?email=" + email,
 			type: "get",
 			dataType: "json",
 			error: function(xhr, status, e){

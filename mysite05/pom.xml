@@ -17,17 +17,10 @@
 	</properties>
 
 	<dependencies>
-		<!-- spring aspect -->
+		<!-- spring webmvc -->
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring-aspects</artifactId>
-			<version>${org.springframework-version}</version>
-		</dependency>
-
-		<!-- spring context -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
+			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 			<!-- jcl 제외 -->
 			<exclusions>
@@ -38,17 +31,10 @@
 			</exclusions>
 		</dependency>
 
-		<!-- spring web mvc -->
+		<!-- spring aspect -->
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId>
-			<version>${org.springframework-version}</version>
-		</dependency>
-
-		<!-- spring web -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-web</artifactId>
+			<artifactId>spring-aspects</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
 

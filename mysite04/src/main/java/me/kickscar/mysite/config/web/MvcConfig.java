@@ -22,7 +22,6 @@ import org.springframework.web.servlet.view.JstlView;
 @Configuration
 @EnableWebMvc
 public class MvcConfig implements WebMvcConfigurer {
-	
 	// View Resolver
 	@Bean
 	public ViewResolver viewResolver() {
@@ -44,6 +43,7 @@ public class MvcConfig implements WebMvcConfigurer {
 				new MediaType("text", "html", Charset.forName("utf-8"))
 			)
 		);
+
 		return messageConverter;
 	}
 	
@@ -53,13 +53,13 @@ public class MvcConfig implements WebMvcConfigurer {
 			.indentOutput(true)
 			.dateFormat(new SimpleDateFormat("yyyy-mm-dd"));
 		
-		MappingJackson2HttpMessageConverter messageConverter
-			= new MappingJackson2HttpMessageConverter(builder.build());
+		MappingJackson2HttpMessageConverter messageConverter = new MappingJackson2HttpMessageConverter(builder.build());
 		messageConverter.setSupportedMediaTypes(
 			Arrays.asList(
 				new MediaType("application", "json", Charset.forName("utf-8"))	
 			)
 		);
+
 		return messageConverter;
 	}
 

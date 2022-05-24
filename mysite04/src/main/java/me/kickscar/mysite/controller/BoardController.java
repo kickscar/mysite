@@ -1,22 +1,17 @@
 package me.kickscar.mysite.controller;
 
-import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-
+import me.kickscar.mysite.security.Auth;
+import me.kickscar.mysite.security.AuthUser;
 import me.kickscar.mysite.service.BoardService;
 import me.kickscar.mysite.vo.BoardVo;
 import me.kickscar.mysite.vo.UserVo;
-import me.kickscar.mysite.security.Auth;
-import me.kickscar.mysite.security.AuthUser;
 import me.kickscar.web.util.WebUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @Controller
 @RequestMapping( "/board" )
@@ -47,7 +42,7 @@ public class BoardController {
 	@Auth
 	@RequestMapping( "/delete/{no}" )
 	public String delete(
-		@AuthUser UserVo authUser,	
+		@AuthUser UserVo authUser,
 		@PathVariable( "no" ) Long boardNo,
 		@RequestParam( value="p", required=true, defaultValue="1") Integer page,
 		@RequestParam( value="kwd", required=true, defaultValue="") String keyword ) {

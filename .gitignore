@@ -9,7 +9,10 @@
 
 ## Maven/Gradle Build Directories
 **/target
-**/build
+**/.gradle/
+**/settings.gradle
+**/build/
+**/out
 
 ## STS/Eclipse IDE
 **/.apt_generated
@@ -36,4 +39,4 @@
 **/.sw?
 
 ## Private Resources
-**/private-resources
+**/**/private-resources

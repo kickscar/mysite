@@ -1,16 +1,15 @@
 package me.kickscar.mysite.security;
 
+import me.kickscar.mysite.service.UserService;
+import me.kickscar.mysite.vo.UserVo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.servlet.HandlerInterceptor;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-
-import me.kickscar.mysite.service.UserService;
-import me.kickscar.mysite.vo.UserVo;
-
-public class LoginInterceptor extends HandlerInterceptorAdapter {
+public class LoginInterceptor implements HandlerInterceptor {
 	@Autowired
 	private UserService userService;
 	

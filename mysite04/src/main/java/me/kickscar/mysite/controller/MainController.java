@@ -1,14 +1,13 @@
 package me.kickscar.mysite.controller;
 
+import me.kickscar.mysite.service.SiteService;
+import me.kickscar.mysite.vo.SiteVo;
+import me.kickscar.mysite.vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import me.kickscar.mysite.service.SiteService;
-import me.kickscar.mysite.vo.SiteVo;
-import me.kickscar.mysite.vo.UserVo;
 
 @Controller
 public class MainController {

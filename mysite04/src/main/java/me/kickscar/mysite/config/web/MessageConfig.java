@@ -11,7 +11,7 @@ public class MessageConfig {
 	@Bean
 	public MessageSource messageSource() {
 		ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-		messageSource.setBasename("com/douzone/mysite/config/web/messages_ko");
+		messageSource.setBasename("me/kickscar/mysite/config/web/messages_ko");
 		messageSource.setDefaultEncoding("utf-8");
 		
 		return messageSource;

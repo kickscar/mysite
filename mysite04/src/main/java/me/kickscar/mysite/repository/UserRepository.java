@@ -1,21 +1,20 @@
 package me.kickscar.mysite.repository;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import me.kickscar.mysite.vo.UserVo;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Repository
 public class UserRepository {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public boolean insert(UserVo vo) {
-		int count = sqlSession.insert("user.insert", vo);
-		return count == 1;
+	public Integer insert(UserVo vo) {
+		return sqlSession.insert("user.insert", vo);
 	}
 
 	public UserVo findByEmailAndPassword(String email, String password) {
@@ -33,8 +32,7 @@ public class UserRepository {
 		return sqlSession.selectOne("user.findByEmail", email);
 	}	
 
-	public void update(UserVo userVo) {
-		sqlSession.update("user.update", userVo);
+	public Integer update(UserVo userVo) {
+		return sqlSession.update("user.update", userVo);
 	}
-
 }

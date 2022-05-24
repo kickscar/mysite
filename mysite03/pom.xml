@@ -18,37 +18,25 @@
 
 	<dependencies>
 		<!-- spring context -->
+		<!-- spring web -->
+		<!-- spring web mvc -->
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
+			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 			<!-- jcl 제외 -->
 			<exclusions>
-			   <exclusion>
-				  <groupId>commons-logging</groupId>
-				  <artifactId>commons-logging</artifactId>
-			   </exclusion>
-			</exclusions>		
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<!-- spring aspect -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aspects</artifactId>
-			<version>${org.springframework-version}</version>
-		</dependency>
-
-		<!-- spring web -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-web</artifactId>
-			<version>${org.springframework-version}</version>
-		</dependency>
-
-		<!-- spring web mvc -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
 

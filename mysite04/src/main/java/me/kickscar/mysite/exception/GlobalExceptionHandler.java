@@ -1,19 +1,17 @@
 package me.kickscar.mysite.exception;
 
-import java.io.OutputStream;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
+import me.kickscar.mysite.dto.JsonResult;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import me.kickscar.mysite.dto.JsonResult;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {

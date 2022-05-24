@@ -1,7 +1,9 @@
 package me.kickscar.mysite.controller;
 
-import javax.validation.Valid;
-
+import me.kickscar.mysite.security.Auth;
+import me.kickscar.mysite.security.AuthUser;
+import me.kickscar.mysite.service.UserService;
+import me.kickscar.mysite.vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,10 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import me.kickscar.mysite.security.Auth;
-import me.kickscar.mysite.security.AuthUser;
-import me.kickscar.mysite.service.UserService;
-import me.kickscar.mysite.vo.UserVo;
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/user")
@@ -29,16 +28,11 @@ public class UserController {
 	@RequestMapping(value="/join", method=RequestMethod.POST)
 	public String join(@ModelAttribute @Valid UserVo vo, BindingResult result, Model model) {
 		if(result.hasErrors()) {
-//			List<ObjectError> list = result.getAllErrors();
-//			for(ObjectError error : list) {
-//				System.out.println(error);
-//			}
-			
 			model.addAllAttributes(result.getModel());
 			return "user/join";
 		}
 		
-		// userService.join(vo);
+		userService.join(vo);
 		return "redirect:/user/joinsuccess";
 	}
 	
@@ -69,11 +63,11 @@ public class UserController {
 		
 		return "redirect:/user/update";
 	}
-	
+
 	@RequestMapping(value="/auth", method=RequestMethod.POST)
 	public void auth() {
 	}
-	
+
 	@RequestMapping(value="/logout", method=RequestMethod.GET)
 	public void logout() {
 	}

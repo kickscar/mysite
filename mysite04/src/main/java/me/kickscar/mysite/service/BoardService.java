@@ -1,15 +1,13 @@
 package me.kickscar.mysite.service;
 
+import me.kickscar.mysite.repository.BoardRepository;
+import me.kickscar.mysite.vo.BoardVo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import me.kickscar.mysite.repository.BoardRepository;
-import me.kickscar.mysite.vo.BoardVo;
 
 @Service
 public class BoardService {
@@ -19,7 +17,6 @@ public class BoardService {
 	@Autowired
 	private BoardRepository boardRepository;
 	
-	@Transactional
 	public boolean addContents( BoardVo boardVo ) {
 		if( boardVo.getGroupNo() != null ) {
 			increaseGroupOrderNo( boardVo );

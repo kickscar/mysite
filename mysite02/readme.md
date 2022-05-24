@@ -3,29 +3,29 @@
 ### Servlet API Based
 
 ### MVC
-    - Model+2
-    - View(JSP, Scriptlet)
-    - Controller(Servlet)
+1. Model+2
+2. View(JSP, Scriptlet)
+3. Controller(Servlet)
 
 ### Configuration
-    - Deployment Descriptor(JavaEE Web, web.xml)
+1. Deployment Descriptor(JavaEE Web, web.xml)
 
 ### Data Access
-    - JDBC Pure
+2. JDBC Pure
 
 ### Servlet API
-    - Filter
-    - Listener
-    - Cookie
-    - HttpSession
+3. Filter
+4. Listener
+5. Cookie
+6. HttpSession
 
 ### Security
-    - Only Authentication
-    - Using HttpSession
+7. Only Authentication
+8. Using HttpSession
 
 ### Test
-    - JUnit5(Jupiter)
+9. JUnit5(Jupiter)
 
 ### Packaging &amp; Deployment
-     - war
-     - Stand-alone Tomcat Deployment(Jenkins)
+1. Packaging war
+2. Stand-alone Tomcat Deployment(Jenkins)

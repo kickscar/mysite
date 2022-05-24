@@ -6,11 +6,13 @@
 		<typeAlias type="me.kickscar.mysite.vo.UserVo" alias="uservo" />
 		<typeAlias type="me.kickscar.mysite.vo.SiteVo" alias="sitevo" />
 		<typeAlias type="me.kickscar.mysite.vo.BoardVo" alias="boardvo" />
+		<typeAlias type="me.kickscar.mysite.vo.GalleryVo" alias="galleryvo" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="me/kickscar/mysite/config/app/mybatis/mappers/guestbook.xml" />
 		<mapper resource="me/kickscar/mysite/config/app/mybatis/mappers/user.xml" />
 		<mapper resource="me/kickscar/mysite/config/app/mybatis/mappers/site.xml" />
 		<mapper resource="me/kickscar/mysite/config/app/mybatis/mappers/board.xml" />
+		<mapper resource="me/kickscar/mysite/config/app/mybatis/mappers/gallery.xml" />
 	</mappers>
 </configuration>

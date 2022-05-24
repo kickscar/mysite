@@ -23,7 +23,8 @@
 						<input id="welcomeMessage" name="welcome" type="text" value="${vo.welcome }">
 
 						<label class="block-label">프로필 이미지</label>
-						<img id="profile" src="${pageContext.request.contextPath }/${vo.profile }" style="width:120px">
+						<img id="profile" src="${pageContext.request.contextPath }${vo.profile }" style="width:120px">
+						<input type="hidden" name="profile" value="${vo.profile }" />
 						<input type="file" name="file">
 
 						<label class="block-label">사이트 설명</label>
