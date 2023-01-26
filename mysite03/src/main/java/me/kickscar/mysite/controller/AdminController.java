@@ -1,5 +1,6 @@
 package me.kickscar.mysite.controller;
 
+import jakarta.servlet.ServletContext;
 import me.kickscar.mysite.service.FileUploadService;
 import me.kickscar.mysite.service.SiteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +13,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import me.kickscar.mysite.security.Auth;
 import me.kickscar.mysite.vo.SiteVo;
-
-import javax.servlet.ServletContext;
 
 @Auth(role="ADMIN")
 @Controller

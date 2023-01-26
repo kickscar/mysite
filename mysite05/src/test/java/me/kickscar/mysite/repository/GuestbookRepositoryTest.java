@@ -1,5 +1,6 @@
 package me.kickscar.mysite.repository;
 
+import me.kickscar.mysite.config.AppConfig;
 import me.kickscar.mysite.vo.GuestbookVo;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -14,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration("classpath:applicationContext.xml")
+@ContextConfiguration(classes={AppConfig.class})
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class GuestbookRepositoryTest {
     private static GuestbookVo mockVo;

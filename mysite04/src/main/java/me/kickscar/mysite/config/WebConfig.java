@@ -14,7 +14,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 @EnableAspectJAutoProxy
 @ComponentScan({"me.kickscar.mysite.controller", "me.kickscar.mysite.exception"})
-@Import({MvcConfig.class, MessageConfig.class, FileuploadConfig.class, SecurityConfig.class})
+@Import({MvcConfig.class, SecurityConfig.class, MessageConfig.class, FileuploadConfig.class})
 public class WebConfig implements WebMvcConfigurer {
     @Bean
     public HandlerInterceptor siteInterceptor() {

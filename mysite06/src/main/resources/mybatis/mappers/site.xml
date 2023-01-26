@@ -3,7 +3,7 @@
 <mapper namespace="site">	
 	<select id="find" parameterType="boolean" resultType="sitevo">
 		<![CDATA[
-		select no, title, welcome, profile, description from site
+		select title, welcome, profile, description from site
 		]]>
 	</select>
 	
