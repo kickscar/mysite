@@ -7,7 +7,7 @@
 **/public/main.js
 **/public/assets
 
-## Maven/Gradle Build Directories
+## Maven/Gradle
 **/target
 **/.gradle/
 **/settings.gradle

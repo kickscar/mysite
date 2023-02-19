@@ -2,7 +2,7 @@ package me.kickscar.mysite.controller;
 
 import java.util.Map;
 
-import me.kickscar.web.util.WebUtil;
+import me.kickscar.web.WebUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,14 +34,14 @@ public class BoardController {
 		model.addAttribute("map", map);
 		//model.addAllAttributes(map);
 		
-		return "board/index";
+		return "views/board/index";
 	}
 	
 	@RequestMapping( "/view/{no}" )
 	public String view( @PathVariable( "no" ) Long no, Model model ) {
 		BoardVo boardVo = boardService.getContents( no );
 		model.addAttribute( "boardVo", boardVo );
-		return "board/view";
+		return "views/board/view";
 	}
 	
 	@Auth
@@ -63,7 +63,7 @@ public class BoardController {
 		Model model) {
 		BoardVo boardVo = boardService.getContents(no, authUser.getNo() );
 		model.addAttribute( "boardVo", boardVo );
-		return "board/modify";
+		return "views/board/modify";
 	}
 
 	@Auth
@@ -83,7 +83,7 @@ public class BoardController {
 	@Auth
 	@RequestMapping( value="/write", method=RequestMethod.GET )	
 	public String write() {
-		return "board/write";
+		return "views/board/write";
 	}
 
 	@Auth	
@@ -108,6 +108,6 @@ public class BoardController {
 		
 		model.addAttribute( "boardVo", boardVo );
 		
-		return "board/reply";
+		return "views/board/reply";
 	}	
 }

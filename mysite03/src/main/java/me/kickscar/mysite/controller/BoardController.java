@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import me.kickscar.mysite.vo.BoardVo;
 import me.kickscar.mysite.security.Auth;
 import me.kickscar.mysite.security.AuthUser;
-import me.kickscar.web.util.WebUtil;
+import me.kickscar.web.WebUtils;
 
 @Controller
 @RequestMapping( "/board" )
@@ -52,7 +52,7 @@ public class BoardController {
 		@RequestParam( value="p", required=true, defaultValue="1") Integer page,
 		@RequestParam( value="kwd", required=true, defaultValue="") String keyword ) {
 		boardService.deleteContents( boardNo, authUser.getNo() );
-		return "redirect:/board?p=" + page + "&kwd=" + WebUtil.encodeURL( keyword, "UTF-8" );
+		return "redirect:/board?p=" + page + "&kwd=" + WebUtils.encodeURL( keyword, "UTF-8" );
 	}
 	
 	@Auth
@@ -77,7 +77,7 @@ public class BoardController {
 		boardService.modifyContents( boardVo );
 		return "redirect:/board/view/" + boardVo.getNo() + 
 				"?p=" + page + 
-				"&kwd=" + WebUtil.encodeURL( keyword, "UTF-8" );
+				"&kwd=" + WebUtils.encodeURL( keyword, "UTF-8" );
 	}
 
 	@Auth
@@ -96,7 +96,7 @@ public class BoardController {
 		boardVo.setUserNo( authUser.getNo() );
 		boardService.addContents( boardVo );
 		
-		return	"redirect:/board?p=" + page + "&kwd=" + WebUtil.encodeURL( keyword, "UTF-8" );
+		return	"redirect:/board?p=" + page + "&kwd=" + WebUtils.encodeURL( keyword, "UTF-8" );
 	}
 
 	@Auth

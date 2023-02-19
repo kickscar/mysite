@@ -1,8 +1,8 @@
 package me.kickscar.mysite.config;
 
-import me.kickscar.config.web.FileuploadConfig;
-import me.kickscar.config.web.MvcConfig;
-import me.kickscar.config.web.SecurityConfig;
+import me.kickscar.mysite.config.web.FileuploadConfig;
+import me.kickscar.mysite.config.web.MvcConfig;
+import me.kickscar.mysite.config.web.SecurityConfig;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;

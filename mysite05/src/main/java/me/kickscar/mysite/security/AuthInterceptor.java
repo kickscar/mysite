@@ -1,20 +1,18 @@
 package me.kickscar.mysite.security;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import org.springframework.web.method.HandlerMethod;
 
 import me.kickscar.mysite.vo.UserVo;
 import org.springframework.web.servlet.HandlerInterceptor;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 public class AuthInterceptor implements HandlerInterceptor {
 
 	@Override
-	public boolean preHandle(
-		HttpServletRequest request,
-		HttpServletResponse response,
-		Object handler)
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		
 		//1. handler 종류 확인

@@ -37,7 +37,7 @@
 
 	<context:annotation-config />
 	
-	<context:component-scan base-package="me.kickscar.mysite.repository, me.kickscar.mysite.service, me.kickscar.mysite.aspect">
+	<context:component-scan base-package="me.kickscar.mysite.repository, me.kickscar.mysite.service, me.kickscar.mysite.aspect, me.kickscar.mysite.event">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository" />
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Component" />			

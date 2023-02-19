@@ -1,22 +1,13 @@
 ## mysite03
 
-#### Spring Framework Based
-
-#### MVC
-1. Model+2
-2. View(JSP, JSTL/EL)
-3. FE/BE Controllers(Spring MVC)
-
-#### Configuration
-1. Spring Context(XML Based)
-2. Deployment Descriptor(JavaEE Web, web.xml)
-
-#### Spring Core
-1. DI
-2. AOP
-3. Data Binding
-4. Bean Validation
-5. Resources
+#### Spring MVC
+#### Spring Context Configuration (XML Based)
+#### Servlet Context Configuration (web.xml)
+#### Spring 
+1. spring-jdbc 
+2. Data Binding 
+3. Bean Validation 
+4. Resources
 
 #### Spring MVC(Web)
 1. Default Servlet Handling

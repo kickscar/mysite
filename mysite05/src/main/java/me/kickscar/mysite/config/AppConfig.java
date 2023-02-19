@@ -1,7 +1,7 @@
 package me.kickscar.mysite.config;
 
-import me.kickscar.config.app.DBConfig;
-import me.kickscar.config.app.MyBatisConfig;
+import me.kickscar.mysite.config.app.DBConfig;
+import me.kickscar.mysite.config.app.MyBatisConfig;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;

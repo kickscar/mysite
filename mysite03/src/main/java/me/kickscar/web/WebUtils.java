@@ -1,9 +1,9 @@
-package me.kickscar.web.util;
+package me.kickscar.web;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
-public class WebUtil {
+public class WebUtils {
 	public static String encodeURL(String url, String encode) {
 		String urlEncode = null;
 		try {

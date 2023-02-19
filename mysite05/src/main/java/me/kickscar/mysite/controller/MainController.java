@@ -15,9 +15,8 @@ public class MainController {
 	@Autowired
 	private SiteService siteService;
 	
-	@RequestMapping("/main")
+	@RequestMapping("/")
 	public String index(Model model) {
-		System.out.println("!!!!!!!!!!!!!!!!!!!1");
 		SiteVo vo = siteService.getSite();
 		model.addAttribute("site", vo);
 		return "main/index";

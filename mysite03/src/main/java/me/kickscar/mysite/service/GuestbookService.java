@@ -5,6 +5,7 @@ import java.util.List;
 import me.kickscar.mysite.repository.GuestbookRepository;
 import me.kickscar.mysite.vo.GuestbookVo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,7 +14,7 @@ public class GuestbookService {
 	GuestbookRepository guestbookRepository;
 	
 	public List<GuestbookVo> getMessageList() {
-			return guestbookRepository.findAll();
+		return guestbookRepository.findAll();
 	}
 	
 	public List<GuestbookVo> getMessageList(Long no) {

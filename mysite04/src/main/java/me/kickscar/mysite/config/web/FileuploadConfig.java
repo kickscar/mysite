@@ -12,7 +12,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @PropertySource("classpath:me/kickscar/mysite/config/web/fileupload.properties")
-public class FileuploadConfig implements WebMvcConfigurer {
+public class
+FileuploadConfig implements WebMvcConfigurer {
 	@Autowired
 	private Environment env;
 	

@@ -3,7 +3,8 @@
 <mapper namespace="site">
 	<select id="find" resultType="sitevo">
 		<![CDATA[
-
+		select title, welcome, profile, description from site
+		]]>
 	</select>
 	
 	<update id="update" parameterType="sitevo">

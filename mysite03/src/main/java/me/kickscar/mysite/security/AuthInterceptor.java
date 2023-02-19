@@ -1,11 +1,13 @@
 package me.kickscar.mysite.security;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import me.kickscar.mysite.vo.UserVo;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class AuthInterceptor implements HandlerInterceptor {
 
@@ -64,5 +66,15 @@ public class AuthInterceptor implements HandlerInterceptor {
 		// @Auth의 role: "ADMIN"
 		// authUser의 role: "ADMIN"
 		return true;
+	}
+
+	@Override
+	public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) throws Exception {
+
+	}
+
+	@Override
+	public void afterCompletion(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) throws Exception {
+
 	}
 }

@@ -1,4 +1,4 @@
-package me.kickscar.config.app;
+package me.kickscar.mysite.config.app;
 
 import javax.sql.DataSource;
 

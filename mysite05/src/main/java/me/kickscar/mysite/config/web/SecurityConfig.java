@@ -1,4 +1,4 @@
-package me.kickscar.config.web;
+package me.kickscar.mysite.config.web;
 
 import java.util.List;
 
@@ -59,6 +59,6 @@ public class SecurityConfig implements WebMvcConfigurer {
 			.addPathPatterns("/**")
 			.excludePathPatterns("/user/auth")
 			.excludePathPatterns("/user/logout")
-			.excludePathPatterns("/static/**");
+			.excludePathPatterns("/assets/**");
 	}
 }

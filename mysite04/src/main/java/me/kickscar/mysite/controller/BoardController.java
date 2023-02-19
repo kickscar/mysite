@@ -5,7 +5,7 @@ import me.kickscar.mysite.security.AuthUser;
 import me.kickscar.mysite.service.BoardService;
 import me.kickscar.mysite.vo.BoardVo;
 import me.kickscar.mysite.vo.UserVo;
-import me.kickscar.web.util.WebUtil;
+import me.kickscar.web.WebUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

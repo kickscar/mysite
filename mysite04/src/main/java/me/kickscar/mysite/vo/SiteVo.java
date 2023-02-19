@@ -29,6 +29,18 @@ public class SiteVo {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		SiteVo clone = new SiteVo();
+		clone.setTitle(title);
+		clone.setDescription(description);
+		clone.setWelcome(welcome);
+		clone.setProfile(profile);
+
+		return clone;
+	}
+
 	@Override
 	public String toString() {
 		return "SiteVo [title=" + title + ", welcome=" + welcome + ", profile=" + profile + ", description="

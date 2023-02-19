@@ -29,9 +29,9 @@ public class SiteVo {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	@Override
-	public String toString() {
-		return "SiteVo [title=" + title + ", welcome=" + welcome + ", profile=" + profile + ", description="
-				+ description + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "SiteVo [title=" + title + ", welcome=" + welcome + ", profile=" + profile + ", description="
+//				+ description + "]";
+//	}
 }

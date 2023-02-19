@@ -1,12 +1,14 @@
 package me.kickscar.mysite.security;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import me.kickscar.mysite.service.UserService;
 import me.kickscar.mysite.vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class LoginInterceptor implements HandlerInterceptor {
 	@Autowired
@@ -32,6 +34,14 @@ public class LoginInterceptor implements HandlerInterceptor {
 		session.setAttribute("authUser", authUser);
 		response.sendRedirect(request.getContextPath());
 		return false;
+	}
+
+	@Override
+	public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) throws Exception {
+	}
+
+	@Override
+	public void afterCompletion(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) throws Exception {
 	}
 
 }

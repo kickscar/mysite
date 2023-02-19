@@ -1,5 +1,6 @@
 package me.kickscar.mysite.config;
 
+import me.kickscar.mysite.event.ApplicationContextEventListener;
 import me.kickscar.mysite.interceptor.SiteInterceptor;
 import org.springframework.context.annotation.*;
 
@@ -16,6 +17,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @ComponentScan({"me.kickscar.mysite.controller", "me.kickscar.mysite.exception"})
 @Import({MvcConfig.class, SecurityConfig.class, MessageConfig.class, FileuploadConfig.class})
 public class WebConfig implements WebMvcConfigurer {
+
+    @Bean
+    public ApplicationContextEventListener applicationContextEventListener() {
+        return new ApplicationContextEventListener();
+    }
+
     @Bean
     public HandlerInterceptor siteInterceptor() {
         return new SiteInterceptor();

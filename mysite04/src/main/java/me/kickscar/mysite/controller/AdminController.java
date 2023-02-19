@@ -4,7 +4,9 @@ import me.kickscar.mysite.security.Auth;
 import me.kickscar.mysite.service.FileUploadService;
 import me.kickscar.mysite.service.SiteService;
 import me.kickscar.mysite.vo.SiteVo;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,31 +22,31 @@ import javax.servlet.ServletContext;
 public class AdminController {
 	@Autowired
 	private ServletContext servletContext;
+	@Autowired
+	ApplicationContext applicationContext;
 
 	@Autowired
 	private SiteService siteService;
-
 	@Autowired
 	private FileUploadService fileUploadService;
-	
+
 	@RequestMapping("")
 	public String main(Model model) {
-		SiteVo vo = siteService.getSite();
-		model.addAttribute("vo", vo);
 		return "admin/main";
 	}
 
 	@RequestMapping(value="/main/update", method=RequestMethod.POST)
-	public String updateMain(SiteVo site, @RequestParam("file") MultipartFile file) {
+	public String updateMain(SiteVo siteVo, @RequestParam("file") MultipartFile file) {
 		String profile = fileUploadService.restore(file);
-
 		if(profile != null) {
-			site.setProfile(profile);
+			siteVo.setProfile(profile);
 		}
 
-		siteService.updateSite(site);
+		siteService.updateSite(siteVo);
 
-		servletContext.setAttribute("site", site);
+		servletContext.setAttribute("siteVo", siteVo);
+		BeanUtils.copyProperties(siteVo, applicationContext.getBean("site"));
+
 		return "redirect:/admin";
 	}
 	
@@ -62,5 +64,4 @@ public class AdminController {
 	public String user() {
 		return "admin/user";
 	}
-	
 }

@@ -1,4 +1,4 @@
-package me.kickscar.web.util;
+package me.kickscar.web;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;

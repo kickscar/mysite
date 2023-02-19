@@ -1,8 +1,9 @@
 package me.kickscar.mysite.repository;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcDaoSupport;
+import org.springframework.jdbc.core.namedparam.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -14,9 +15,11 @@ import me.kickscar.mysite.vo.GuestbookVo;
 public class GuestbookRepository extends NamedParameterJdbcDaoSupport {
 	private final Map<String, String> SQL = Map.of(
 		"findAll",
-			"   select no, name, date_format(reg_date, '%Y/%m/%d %H:%i:%s') as reg_date, message" +
-				"     from guestbook" +
-				" order by reg_date desc"
+			"select no, name, date_format(reg_date, '%Y/%m/%d %H:%i:%s') as reg_date, message from guestbook order by reg_date desc",
+		"insert",
+			"insert into guestbook values (null, :name, :password, :message, now())",
+		"delete",
+			"delete from guestbook where no=:no and password=:password"
 	);
 
 	private final SqlSession sqlSession;
@@ -43,10 +46,10 @@ public class GuestbookRepository extends NamedParameterJdbcDaoSupport {
 	}
 
 	public Integer insert(GuestbookVo vo) {
-		return sqlSession.insert("guestbook.insert", vo);
+		return getNamedParameterJdbcTemplate().update(SQL.get("insert"), new ObjectMapper().convertValue(vo, Map.class));
 	}
 	
 	public Integer delete(GuestbookVo vo) {
-		return sqlSession.delete("guestbook.delete", vo);
+		return getNamedParameterJdbcTemplate().update(SQL.get("delete"), new BeanPropertySqlParameterSource(vo));
 	}
 }

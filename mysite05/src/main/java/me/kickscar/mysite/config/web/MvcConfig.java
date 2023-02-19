@@ -1,4 +1,4 @@
-package me.kickscar.config.web;
+package me.kickscar.mysite.config.web;
 
 import java.nio.charset.Charset;
 import java.text.SimpleDateFormat;
@@ -19,20 +19,18 @@ import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.thymeleaf.spring6.SpringTemplateEngine;
-import org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver;
-import org.thymeleaf.spring6.view.ThymeleafViewResolver;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.JstlView;
+import org.thymeleaf.spring5.ISpringTemplateEngine;
+import org.thymeleaf.spring5.SpringTemplateEngine;
+import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
+import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
+import org.thymeleaf.templateresolver.ITemplateResolver;
 
 @Configuration
 @EnableWebMvc
 public class MvcConfig implements WebMvcConfigurer {
-
-	private ApplicationContext applicationContext;
-
-	public MvcConfig(ApplicationContext applicationContext) {
-		this.applicationContext = applicationContext;
-	}
 
 	@Bean
 	public MessageSource messageSource() {
@@ -43,51 +41,53 @@ public class MvcConfig implements WebMvcConfigurer {
 		return messageSource;
 	}
 
-	// Jstl View Resolver
-//	@Bean
-//	public ViewResolver jstlViewResolver() {
-//		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-//		viewResolver.setViewClass(JstlView.class);
-//		viewResolver.setPrefix("/WEB-INF/views/");
-//		viewResolver.setSuffix(".jsp");
-//		// viewResolver.setExposeContextBeansAsAttributes(true);
-//		viewResolver.setOrder(1);
-//		return viewResolver;
-//	}
-
-	// Thymeleaf View Resolver
 	@Bean
-	public SpringResourceTemplateResolver templateResolver() {
-//		ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver(servletContext);
-//		templateResolver.setPrefix("/WEB-INF/views/");
-//		templateResolver.setSuffix(".html");
-//		templateResolver.setTemplateMode("HTML5");
-
+	public SpringResourceTemplateResolver templateResolver(ApplicationContext applicationContext) {
 		SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
-		templateResolver.setApplicationContext(this.applicationContext);
+
+		templateResolver.setApplicationContext(applicationContext);
 		templateResolver.setPrefix("classpath:/templates/");
 		templateResolver.setSuffix(".html");
 		templateResolver.setTemplateMode(TemplateMode.HTML);
-		// templateResolver.setCacheable(true);
-
+		templateResolver.setCacheable(true);
 		return templateResolver;
 	}
 
 	@Bean
-	public SpringTemplateEngine templateEngine() {
+	public SpringTemplateEngine templateEngine(ITemplateResolver templateResolver) {
 		SpringTemplateEngine templateEngine = new SpringTemplateEngine();
-		templateEngine.setTemplateResolver(templateResolver());
+
+		templateEngine.setTemplateResolver(templateResolver);
 		templateEngine.setEnableSpringELCompiler(true);
 		templateEngine.setTemplateEngineMessageSource(messageSource());
+
 		return templateEngine;
 	}
 
 	@Bean
-	public ViewResolver thymeleafViewResolver() {
+	public ViewResolver thymeleafViewResolver(ISpringTemplateEngine templateEngine) {
 		ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
-		viewResolver.setTemplateEngine(templateEngine());
+
+		viewResolver.setTemplateEngine(templateEngine);
 		viewResolver.setCharacterEncoding("UTF-8");
 		viewResolver.setOrder(1);
+
+		return viewResolver;
+	}
+
+	// View Resolver
+	@Bean
+	public ViewResolver jspViewResolver() {
+		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+
+		viewResolver.setViewClass(JstlView.class);
+		viewResolver.setViewNames("views/*");
+		viewResolver.setPrefix("/WEB-INF/");
+		viewResolver.setSuffix(".jsp");
+		viewResolver.setExposeContextBeansAsAttributes(true);
+		viewResolver.setExposedContextBeanNames("site");
+		viewResolver.setOrder(0);
+
 		return viewResolver;
 	}
 
@@ -109,8 +109,7 @@ public class MvcConfig implements WebMvcConfigurer {
 			.indentOutput(true)
 			.dateFormat(new SimpleDateFormat("yyyy-mm-dd"));
 		
-		MappingJackson2HttpMessageConverter messageConverter
-			= new MappingJackson2HttpMessageConverter(builder.build());
+		MappingJackson2HttpMessageConverter messageConverter = new MappingJackson2HttpMessageConverter(builder.build());
 		messageConverter.setSupportedMediaTypes(
 			Arrays.asList(
 				new MediaType("application", "json", Charset.forName("utf-8"))	
@@ -125,16 +124,10 @@ public class MvcConfig implements WebMvcConfigurer {
 		converters.add(mappingJackson2HttpMessageConverter());
 	}
 
-	// Default Servlet Handler 등록 작업
-	// @Override
-	// public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-	// 	configurer.enable();
-	// }
-
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry
 				.addResourceHandler("/assets/**")
-				.addResourceLocations("classpath:/static/");
+				.addResourceLocations("classpath:/assets/");
 	}
 }
